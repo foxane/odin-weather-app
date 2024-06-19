@@ -1,5 +1,5 @@
 {
-  "name": "odin-todo",
+  "name": "odin-weather-app",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -14,9 +14,11 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^7.1.2",
+    "date-fns": "^3.6.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.6.0",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
     "style-loader": "^4.0.0",
