@@ -16,7 +16,7 @@ async function getData(city) {
 
     return data;
   } catch (error) {
-    // Noi much to do, dom will handle it
+    // Not much to do, dom will handle it
 
     return error;
   }
