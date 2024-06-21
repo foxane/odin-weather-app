@@ -201,22 +201,30 @@ const dom = {
     heroDetail.appendChild(micella);
     heroMain.appendChild(heroDetail);
 
-    const locationDiv = document.createElement('div');
-    locationDiv.classList.add('location');
+    const locationDiv = this.elementFactory({
+      type: 'div',
+      classes: ['location'],
+    });
 
-    const locationParagraph = document.createElement('p');
-    locationParagraph.classList.add('location');
-    locationParagraph.textContent = `${name}, ${region}, ${country}`;
+    const locationParagraph = this.elementFactory({
+      type: 'p',
+      classes: ['location'],
+      textContent: `${(name, region, country)}`,
+    });
     locationDiv.appendChild(locationParagraph);
 
-    const dateParagraph = document.createElement('p');
-    dateParagraph.classList.add('date');
-    dateParagraph.textContent = date;
+    const dateParagraph = this.elementFactory({
+      type: 'p',
+      classes: ['date'],
+      textContent: date,
+    });
     locationDiv.appendChild(dateParagraph);
 
-    const timeParagraph = document.createElement('p');
-    timeParagraph.classList.add('time');
-    timeParagraph.textContent = time;
+    const timeParagraph = this.elementFactory({
+      type: 'p',
+      classes: ['time'],
+      textContent: time,
+    });
     locationDiv.appendChild(timeParagraph);
 
     // Append all elements to this.hero
@@ -244,31 +252,42 @@ const dom = {
   },
 
   renderCard(hourItem) {
-    // Create elements
-    const forecastCard = document.createElement('div');
-    forecastCard.classList.add('forecast-card');
+    // Create elements using elementFactory
+    const forecastCard = this.elementFactory({
+      type: 'div',
+      classes: ['forecast-card'],
+    });
 
-    const foreTime = document.createElement('p');
-    foreTime.classList.add('fore-time');
-    foreTime.textContent = format(new Date(hourItem.time), 'kk : mm b');
+    const foreTime = this.elementFactory({
+      type: 'p',
+      classes: ['fore-time'],
+      textContent: format(new Date(hourItem.time), 'kk : mm b'),
+    });
     forecastCard.appendChild(foreTime);
 
-    const weatherIcon = document.createElement('img');
-    weatherIcon.src = getIcon(hourItem.condition.code);
-    weatherIcon.alt = 'weather-icon';
-    weatherIcon.width = '50';
+    const weatherIcon = this.elementFactory({
+      type: 'img',
+      classes: [],
+      src: getIcon(hourItem.condition.code),
+      width: '50',
+      alt: 'weather-icon',
+    });
     forecastCard.appendChild(weatherIcon);
 
-    const foreWeather = document.createElement('p');
-    foreWeather.classList.add('fore-weather');
-    foreWeather.textContent = hourItem.condition.text;
+    const foreWeather = this.elementFactory({
+      type: 'p',
+      classes: ['fore-weather'],
+      textContent: hourItem.condition.text,
+    });
     forecastCard.appendChild(foreWeather);
 
-    const foreTemp = document.createElement('p');
-    foreTemp.classList.add('fore-temp');
-    foreTemp.textContent = this.isCelcius
-      ? `${hourItem.temp_c}°C`
-      : `${hourItem.temp_f}°F`;
+    const foreTemp = this.elementFactory({
+      type: 'p',
+      classes: ['fore-temp'],
+      textContent: this.isCelcius
+        ? `${hourItem.temp_c}°C`
+        : `${hourItem.temp_f}°F`,
+    });
     forecastCard.appendChild(foreTemp);
 
     // Append the forecast card to this.forecast
